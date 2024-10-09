@@ -14,7 +14,7 @@ public class ImageE {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private String imageUrl;
+    private String imageUrl, thumbUrl;
     private AlbumE album;
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime uploadDate;
@@ -22,9 +22,10 @@ public class ImageE {
     public ImageE() {
     }
 
-    public ImageE(String imageUrl, AlbumE album, LocalDateTime uploadDate) {
-        this.imageUrl = imageUrl;
+    public ImageE(AlbumE album, String imageUrl, String thumbUrl, LocalDateTime uploadDate) {
         this.album = album;
+        this.imageUrl = imageUrl;
+        this.thumbUrl = thumbUrl;
         this.uploadDate = uploadDate;
     }
 
@@ -70,6 +71,14 @@ public class ImageE {
         sb.append(", uploadDate=").append(uploadDate);
         sb.append('}');
         return sb.toString();
+    }
+
+    public String getThumbUrl() {
+        return thumbUrl;
+    }
+
+    public void setThumbUrl(String thumbUrl) {
+        this.thumbUrl = thumbUrl;
     }
 
 
